@@ -30,50 +30,26 @@
 </div>
 
 <script>
-
-// Desarrolle el script correspondiente
 function change_myselect(sel) {
-  /*var obj, dbParam, xmlhttp;
+var obj, dbParam, xmlhttp;
   obj = { table: sel, limit: 20 };
   dbParam = JSON.stringify(obj);
   xmlhttp = new XMLHttpRequest();
 
-  xmlhttp.onreadystatechange = function() {
-    myObj = JSON.parse(this.responseText);
-    text = "<table border='1'>"
-    for (x in myObj) {
-      text += "<tr><td>" + myObj[x].Genero + "</td></tr>";
+  xmlhttp.onload = function() {
+    const myObj = JSON.parse(this.responseText);
+    let text = "<table border='1'><tr><th>Nombre</th><th>Protagonista</th></tr>";
+    for (var i = 0; i<myObj.peliculas.length; i++) {
+      if(sel == myObj.peliculas[i].Genero)
+      text += "<tr><td>" + myObj.peliculas[i].Nombre + "</td><td>" + myObj.peliculas[i].Protagonista+ "</tr>";
     }
-    text += "</table>"    
+    text += "</table>"
     document.getElementById("demo").innerHTML = text;
-  }*/
-	
-  var xmlhttp = new XMLHttpRequest();
-  xmlhttp.onreadystatechange = function() {
-     var text="";
-if (this.readyState == 4 && this.status == 200) {3
-
-  const myJSON = JSON.stringify(this.responseText);
-
-document.getElementById("demo").innerHTML =
-myObj = JSON.parse(myJSON);
-
-
-for (let x in myObj) {
-    text += myObj.peliculas[x].Genero + "<br>";
   }
-  document.getElementById("demo").innerHTML = text;
-}
-
-};
-xmlhttp.open("GET", "ListaPeliculas.json", true);
-xmlhttp.send();
-}
-	/*
-  xmlhttp.open("GET", "ListaPeliculas.json", true);
+  xmlhttp.open("POST", "ListaPeliculas.json");
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
   xmlhttp.send("x=" + dbParam);
-  */
+}
 
 </script>
 
