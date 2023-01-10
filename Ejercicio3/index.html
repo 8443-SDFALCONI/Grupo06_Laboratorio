@@ -31,9 +31,7 @@
 
 <script>
 function change_myselect(sel) {
-var obj, dbParam, xmlhttp;
-  obj = { table: sel, limit: 20 };
-  dbParam = JSON.stringify(obj);
+var xmlhttp;
   xmlhttp = new XMLHttpRequest();
 
   xmlhttp.onload = function() {
@@ -48,7 +46,7 @@ var obj, dbParam, xmlhttp;
   }
   xmlhttp.open("POST", "ListaPeliculas.json");
   xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-  xmlhttp.send("x=" + dbParam);
+  xmlhttp.send();
 }
 
 </script>
